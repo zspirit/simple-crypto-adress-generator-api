@@ -1,0 +1,10 @@
+flask
+flask-restful
+flask-apispec
+flask-restx
+pytest
+Werkzeug
+web3
+bitcoinaddress
+flask_sqlalchemy
+simplejson
