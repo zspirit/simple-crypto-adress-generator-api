@@ -7,7 +7,7 @@ from bitcoinaddress import Wallet
 from eth_account import Account
 import secrets
 from models import Cryptoaddress
-from config import app, ns, db
+from config import app, db, api
 
 docs = FlaskApiSpec(app)
 
@@ -30,9 +30,9 @@ def retrievData(data):
     return res
 
 
-@ns.route('/list')
+@api.route('/list')
 class CryptoAdressGeneratorAPI(MethodResource, Resource):
-    @doc(description='list Address.', tags=['GET', 'ADRESS', 'GENERATOR'])
+    @doc(description='list Address.', tags=['GET', 'ADDRESS', 'GENERATOR'])
     def get(self, ):
         address = ""
         try:
@@ -47,9 +47,9 @@ class CryptoAdressGeneratorAPI(MethodResource, Resource):
                             'code': 400,
                             'message': str(e)})
 
-@ns.route('/list/<int:id>')
+@api.route('/list/<int:id>')
 class CryptoAdressGeneratorAPI(MethodResource, Resource):
-    @doc(description='Retrieve Address.', tags=['GET', 'ADRESS', 'GENERATOR'])
+    @doc(description='Retrieve Address.', tags=['GET', 'ADDRESS', 'GENERATOR'])
     def get(self, id, ):
         address = ''
         try:
@@ -64,9 +64,9 @@ class CryptoAdressGeneratorAPI(MethodResource, Resource):
                             'code': 400,
                             'message': str(e)})
 
-@ns.route('/delete/<int:id>')
+@api.route('/delete/<int:id>')
 class CryptoAdressGeneratorAPI(MethodResource, Resource):
-    @doc(description='Delete Address.', tags=['DELETE', 'ADRESS', 'GENERATOR'])
+    @doc(description='Delete Address.', tags=['DELETE', 'ADDRESS', 'GENERATOR'])
     def delete(self, id, ):
         address = Cryptoaddress.query.get_or_404(id)
         res = "Address " + str(id) + " was successfully deleted"
@@ -79,9 +79,9 @@ class CryptoAdressGeneratorAPI(MethodResource, Resource):
         except:
             return 'There was an issue deleting  address'
 
-@ns.route('/<string:crypto>')
+@api.route('/<string:crypto>')
 class CryptoAdressGeneratorAPI(MethodResource, Resource):
-    @doc(description='Generate Address.', tags=['POST', 'ADRESS', 'GENERATOR'])
+    @doc(description='Generate Address.', tags=['POST', 'ADDRESS', 'GENERATOR'])
     def post(self, crypto,):
         address = ''
         pkey = ''
