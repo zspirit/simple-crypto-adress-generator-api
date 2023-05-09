@@ -8,3 +8,4 @@ web3
 bitcoinaddress
 flask_sqlalchemy
 simplejson
+pytest
