@@ -10,14 +10,14 @@ db = SQLAlchemy(app)
 
 api = Api(app,
           version='1.0',
-          title='Simple Crypto Adress Generator API',
-          description='This is a simple demo for a Crypto Adress Generator API ')  # Flask restful wraps Flask app around it.
+          title='Simple Crypto Address Generator API',
+          description='This is a simple demo for a Crypto Address Generator API ')  # Flask restful wraps Flask app around it.
 
-ns = api.namespace('/', description='Demo : Crypto Adress Generator API')
+ns = api.namespace('/', description='Demo : Crypto Address Generator API')
 
 app.config.update({
     'APISPEC_SPEC': APISpec(
-        title='Simple Crypto Adress Generator API',
+        title='Simple Crypto Address Generator API',
         version='v1',
         plugins=[MarshmallowPlugin()],
         openapi_version='2.0.0'
